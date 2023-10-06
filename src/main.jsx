@@ -8,6 +8,7 @@ import {
 import App from './App.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Users from './componenets/Users';
+import EditUser from './componenets/EditUser';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
     path: "/user",
     element: <Users></Users>,
     loader: () => fetch('http://localhost:5000/users')
+  },
+  {
+    path: "/user/:id",
+    element: <EditUser></EditUser>,
+    loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
   },
 ]);
 
